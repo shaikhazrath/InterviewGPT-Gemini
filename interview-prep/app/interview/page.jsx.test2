@@ -1,0 +1,54 @@
+'use client';
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import React, { useState } from 'react';
+import AudioInputComponent from '../../components/AudioInputComponent'
+const genAI = new GoogleGenerativeAI('AIzaSyCZSVbcfcEdN2BZ_7tuSTqT547ry44CEgM');
+
+
+const Page = () => {
+  const [jobDescription, setJobDescription] = useState('');
+  const [generatedContent, setGeneratedContent] = useState([]);
+
+
+  async function handleSubmit() {
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const result = await model.generateContent([
+        `Assume the role of a job recruiter. I'd like to discuss a job opening with you. Please consider the following job description: ${jobDescription} Based on this job description, I'd like you to prepare 10 questions that a candidate might be asked during an interview. Please format the questions in a consistent style, making sure each question is clear and concise`
+    ]);
+    const response =  result.response;
+    const text = response.text();    
+    const lines = text.split('\n');
+    const questions = [];
+    for (const line of lines) {
+        const trimmedLine = line.trim();
+        console.log(line)
+        console.log(trimmedLine)
+        if (trimmedLine !== '') {
+            questions.push(trimmedLine);
+        }
+    }
+    setGeneratedContent(questions);
+  }
+
+
+  
+  return (
+    <div>
+      <textarea
+        type="text"
+        value={jobDescription}
+        onChange={e=>setJobDescription(e.target.value)}
+        placeholder="Enter your prompt"
+      />
+      <button onClick={handleSubmit} disabled={!jobDescription}>Generate Content</button>
+      {generatedContent &&  <div>
+        {generatedContent[0]}
+        <br />
+            {generatedContent[1]}
+         <AudioInputComponent generatedContent={generatedContent[1]}/>
+        </div>}
+    </div>
+  );
+};
+
+export default Page;

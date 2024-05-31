@@ -1,0 +1,93 @@
+'use client';
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import React, { useState } from 'react';
+
+const genAI = new GoogleGenerativeAI('AIzaSyCZSVbcfcEdN2BZ_7tuSTqT547ry44CEgM');
+
+async function fileToGenerativePart(file) {
+  const base64EncodedDataPromise = new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result.split(',')[1]);
+      reader.readAsDataURL(file);
+  });
+
+  return {
+      inlineData: { data: await base64EncodedDataPromise, mimeType: file.type },
+  };
+}
+
+export const getBase64 = (file) => new Promise(function (resolve, reject) {
+  let reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () => resolve(reader.result)
+  reader.onerror = (error) => reject('Error: ', error);
+})
+
+
+const Page = () => {
+  const [image, setImage] = useState(null);
+  const [jobDescription, setJobDescription] = useState('');
+  const [generatedContent, setGeneratedContent] = useState([]);
+  const [imageInineData,setImageInlineData] = useState('')
+
+ 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+  
+    getBase64(file)
+        .then((result) => {
+            setImage(result);
+        })
+        .catch(e => console.log(e))
+  
+    fileToGenerativePart(file).then((image) => {
+        setImageInlineData(image);
+    });
+  }
+
+  async function handleSubmit() {
+    const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
+    const result = await model.generateContent([
+        `"I'm a job recruiter and I've been given a job description which is ${jobDescription} , and a resume is the image to review. Can you help me assess the candidate's qualifications and skills? Based on the resume, I'd like you to ask 10 questions, prioritizing those that are most relevant to the job description. Additionally, can you come up with 4 coding questions that are directly related to the job description and the candidate's skills mentioned in their resume? Please ensure that these coding questions are technical in nature and refrain from asking any non-technical questions
+        `, imageInineData
+    ]);
+    const response = await result.response;
+    const text = response.text();
+    const lines = trimmedText.split('\n');
+    const questions = [];
+    for (const line of lines) {
+        const trimmedLine = line.trim();
+        console.log(line)
+        console.log(trimmedLine)
+        if (trimmedLine !== '') {
+            questions.push(trimmedLine);
+        }
+    }
+    
+    setGeneratedContent(questions);
+}
+
+const handleClick = () => {
+    aiImageRun();
+}
+  
+  return (
+    <div>
+      <input type="file" onChange={handleImageChange} accept="image/*" />
+      <input
+        type="text"
+        value={jobDescription}
+        onChange={e=>setJobDescription(e.target.value)}
+        placeholder="Enter your prompt"
+      />
+      <button onClick={handleSubmit} disabled={ !imageInineData && !jobDescription}>Generate Content</button>
+      {generatedContent &&  <div>
+            {generatedContent.map((question, index) => (
+                <p key={index}>{question}</p>
+            ))}
+        </div>}
+    </div>
+  );
+};
+
+export default Page;

@@ -1,0 +1,91 @@
+// import MicRecorder from "mic-recorder-to-mp3"
+// import { useEffect, useState, useRef } from "react"
+// import axios from "axios";
+
+
+// const AudioInputComponent = ({ generatedContent, GetQuestion }) => {
+//   const recorder = useRef(null)
+//   const audioPlayer = useRef(null)
+//   const [blobURL, setBlobUrl] = useState(null)
+//   const [audioFile, setAudioFile] = useState(null)
+//   const [isRecording, setIsRecording] = useState(null)
+//   const [processing,setProcessing] = useState(false)
+  
+
+//   useEffect(() => {
+//     recorder.current = new MicRecorder({ bitRate: 128 })
+//   }, [])
+
+//   const startRecording = () => {
+//     recorder.current.start().then(() => {
+//       setIsRecording(true)
+//     })
+//   }
+
+//   const stopRecording = () => {
+//     setProcessing(true)
+//     recorder.current
+//       .stop()
+//       .getMp3()
+//       .then(([buffer, blob]) => {
+//         const file = new File(buffer, "audio.mp3", {
+//           type: blob.type,
+//           lastModified: Date.now(),
+//         })
+//         const newBlobUrl = URL.createObjectURL(blob)
+//         setBlobUrl(newBlobUrl)
+//         setIsRecording(false)
+//         const interviewid = localStorage.getItem('interviewid')
+//         const token = localStorage.getItem('token')
+//         const formData = new FormData();
+//         formData.append('file', file);
+//         formData.append('interviewid', interviewid)
+//         axios.post('http://127.0.0.1:9000/upload', formData, {
+//           headers: {
+//             'Content-Type': 'multipart/form-data',
+//             Authorization: token
+//           }
+//         })
+//           .then(response => {
+//             setProcessing(false)
+
+//             GetQuestion()
+
+//             // console.log('File uploaded successfully:', response.data);
+//           })
+//           .catch(error => {
+//             console.error('Error uploading file:', error);
+//           });
+//       })
+//       .catch((e) => console.log(e))
+//   }
+
+
+
+
+//   return (
+//     <div>
+//       {
+//         processing ?
+//         <h1>processing</h1>
+//         :
+//         <div>
+//         {isRecording ?
+//          <button disabled={!isRecording} onClick={stopRecording}>
+//          STOP
+//        </button>:
+//  <button disabled={isRecording} onClick={startRecording}>
+//           START
+//         </button>
+//       }
+       
+       
+//       </div>
+
+//       }
+    
+//     </div>
+//   )
+// }
+
+// export default AudioInputComponent
