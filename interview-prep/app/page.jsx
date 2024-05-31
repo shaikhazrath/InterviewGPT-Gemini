@@ -63,7 +63,7 @@ export default function Home() {
       AI Assistance
       </span> 
     </h1>
-    <p className="md:text-xl text-lg mt-4 max-w-2xl">
+    <p className="md:text-xl text-base mt-4 max-w-2xl">
       Get personalized interview questions and detailed feedback to boost your confidence and performance.
     </p> 
     <p className="w-max py-1 text-center border-b-4 rounded- border-purple-500 ">Made with Gemini Ai</p>
