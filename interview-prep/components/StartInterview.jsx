@@ -43,33 +43,39 @@ const StartInterview = () => {
           }
         }
       );
-      localStorage.setItem('interviewid',res.data._id)
+      localStorage.setItem('interviewid', res.data._id);
       if (res.data) {
         router.push('/interview');
       }
     } catch (error) {
       setStatus(false);
-
       console.log(error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className='flex justify-center flex-col md:w-1/2 items-center w-full mx-2'>
-      <textarea
-        required
-        placeholder='Enter your job description'
-        className='w-full md:w-10/12 h-28 my-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 p-1 resize-none'
-        value={jobDescription}
-        onChange={e => setJobDescription(e.target.value)}
-      />
-      {status ? 
-       <button type='submit' className='bg-gray-400 py-3 rounded-md m-2 font-bold text-white md:w-1/3 px-2'>Pleace wait ..</button>
-      :
-      <button type='submit' className='bg-blue-400 py-3 rounded-md m-2 font-bold text-white md:w-1/3 px-2'>Start Interview</button>
+    <form onSubmit={handleSubmit} className="flex flex-col items-center w-full md:w-3/4 lg:w-1/2 mx-auto px-2">
+    <textarea
+      required
+      placeholder="Enter your job description"
+      className="w-full h-28 my-2 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none text-black"
+      value={jobDescription}
+      onChange={e => setJobDescription(e.target.value)}
+    />
 
-    }
-    </form>
+    <button 
+  type="submit" 
+  className={`py-3 rounded-3xl m-2 p-5 font-semibold text-white w-full md:w-1/4
+              ${status ? 'bg-gray-400 hover:bg-gray-500 ' : ' border-purple-900 border-2 bg-gradient-to-r from-purple-400 to-purple-600 hover:bg-gradient-to-r hover:from-purple-500 hover:to-purple-400'}
+              shadow-md transition duration-300 
+             
+             `}
+  disabled={status}
+>
+  {status ? 'Please wait ...' : 'Start Interview'}
+</button>
+  </form>
+  
   );
 }
 

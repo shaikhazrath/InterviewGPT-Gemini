@@ -1,7 +1,6 @@
-'use client'
 import React, { useState, useEffect } from 'react';
 
-const AudioInputComponent = ({submitAnswer}) => {
+const AudioInputComponent = ({ submitAnswer }) => {
   const [text, setText] = useState([]);
   const [recognition, setRecognition] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
@@ -19,7 +18,7 @@ const AudioInputComponent = ({submitAnswer}) => {
     };
 
     recognitionInstance.onend = function () {
-      setIsRecording(false)
+      setIsRecording(false);
     };
 
     setRecognition(recognitionInstance);
@@ -40,23 +39,23 @@ const AudioInputComponent = ({submitAnswer}) => {
       setIsRecording(false);
       submitAnswer(text.join(' '))
       setText([])
-      }
+    }
   };
 
   return (
     <div>
-      <h1>{text.join(' ')}</h1>
-      {isRecording ?
-        <button onClick={handleOnStop}>
-          Submit Answer
-        </button>
-        :
-        
-        <button onClick={handleOnRecord}>
-          Start Answer
-        </button>
-      }
-    </div>
+    <button
+      onClick={isRecording ? handleOnStop : handleOnRecord}
+      className={`w-28 h-28 rounded-full text-xl font-bold text-white ${
+        isRecording
+          ? 'bg-gradient-to-r from-red-500 to-orange-600'
+          : 'bg-gradient-to-r from-blue-500 to-purple-600'
+      } ${isRecording ? 'blink-border' : ''}`}
+    >
+      {isRecording ? 'Stop' : 'Start'}
+    </button>
+  </div>
+  
   );
 };
 

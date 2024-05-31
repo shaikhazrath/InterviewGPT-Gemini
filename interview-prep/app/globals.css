@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  /* Dark mode variant for textarea and button */
+  .dark textarea,
+  .dark button {
+    border-color: #4a5568;
+    background-color: #1a202c;
+    color: #cbd5e0;
+  }
+}
+
+@layer utilities {
+  /* Dark mode variant for text color */
+  .dark:text-black {
+    color: #000000;
+  }
+
+  /* Dark mode variant for background color */
+  .dark:bg-white {
+    background-color: #ffffff;
+  }
+}
+
+
+@keyframes blink {
+    0% {
+      border:0px solid white;
+    }
+    50% {
+      border: 5px solid white;
+    }
+    100% {
+      border:0px solid white;
+    }
+  }
+  
+  .blink-border {
+    animation: blink 1s infinite;
+  }
+  

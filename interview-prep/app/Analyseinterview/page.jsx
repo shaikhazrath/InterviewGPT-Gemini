@@ -1,9 +1,11 @@
-'use client'
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-const page = () => {
-  const [data,setData]= useState(null)
-  const [loading,setLoading] = useState(false)
+'use client';
+
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+
+const Page = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -14,54 +16,65 @@ const page = () => {
             authorization: token
           }
         });
-        
       } catch (error) {
         console.log(error);
         router.push('/');
       }
-    }
+    };
 
     checkAuth();
   }, []);
 
-  
-  const getAnalysis=async()=>{
+  const getAnalysis = async () => {
     try {
-      setLoading(true)
+      setLoading(true);
       const token = localStorage.getItem('token');
-      const interviewid = localStorage.getItem('interviewid');
-      const res =await  axios.get(`${process.env.NEXT_PUBLIC_API}/getAnalysis?id=${interviewid}`, {
+      const interviewId = localStorage.getItem('interviewid');
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API}/getAnalysis?id=${interviewId}`, {
         headers: {
           Authorization: token
         }
-      })
-      setData(res.data.data)
-      console.log(res.data.data)
-      setLoading(false)
+      });
+      setData(res.data.data);
+      setLoading(false);
     } catch (error) {
-      setLoading(false)
-      console.log(error)
+      setLoading(false);
+      console.log(error);
     }
+  };
+
+  useEffect(() => {
+    getAnalysis();
+  }, []);
+
+  if (loading) {
+    return <h1>Loading...</h1>;
   }
-  useEffect(()=>{
-    getAnalysis()
-  },[])
-  if(loading){
-    return <h1>loading....</h1>
-  }
-    
+
   return (
-    <div>
-      {data &&  
-        data.map((i, index) => (
-          <div key={index}>
-          <h1>{i.rating}</h1>
-          <h1>{i.feedback}</h1>
-          </div>  
-        ))
-      } 
-    </div>
-  );
+    <div className='bg-black text-white min-h-screen q'>
+      {data && data.map((item, index) => (
+        <div key={index} className='flex justify-start items-center'>
+          <div className=' '>
+            <svg className=' -rotate-90'>
+              <circle className='text-slate-400' stroke='currentColor' strokeWidth='4' cx='50%' cy='50%' r='48' fill='transparent' />
+              <circle cx='50%' cy='50%' r='48' stroke='currentColor' strokeLinecap='round' strokeWidth='4' fill='transparent'
+                className='text-orange-500 transition-all duration-500'
+                style={{ strokeDasharray: 302, strokeDashoffset: 302 - (item.rating  / 10) * 302 }}
+              />
+            </svg>
+          </div>
+          <p>
+          {
+  item.feedback.split('-').slice(1).map((part, index) => (
+    <span key={index + 1}>{index + 1} {part}<br/></span>
+  ))
 }
 
-export default page
+</p>     </div>
+      ))}
+    </div>
+  );
+};
+
+export default Page;

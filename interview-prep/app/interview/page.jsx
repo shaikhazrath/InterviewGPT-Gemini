@@ -72,8 +72,10 @@ const Page = () => {
 
   return (
     
-    <div>
-      <h1>{question}</h1>
+    <div className='h-screen bg-black flex justify-around flex-col items-center'>
+      <div className=' md:px-64 px-10'>
+      <h1 className=' font-semibold md:font-bold text-xl text-white text-center'>{question}</h1>
+      </div>
       <AudioInputComponent generatedContent={question} GetQuestion={getQuestion} submitAnswer={submitAnswer} />
     </div>
   );
