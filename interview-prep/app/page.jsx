@@ -66,7 +66,7 @@ export default function Home() {
     <p className="md:text-xl text-lg mt-4 max-w-2xl">
       Get personalized interview questions and detailed feedback to boost your confidence and performance.
     </p> 
-    <p className="w-max py-1 text-center border-b-4 rounded- border-purple-500 ">Powered By Gemini Ai</p>
+    <p className="w-max py-1 text-center border-b-4 rounded- border-purple-500 ">Made with Gemini Ai</p>
     <div className="mt-8 w-full flex justify-center">
       {authenticated ? (
         <div className="w-full md:w-screen">
