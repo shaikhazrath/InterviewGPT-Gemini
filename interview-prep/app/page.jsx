@@ -41,7 +41,7 @@ export default function Home() {
     <Link href="/" className="text-xl font-bold text-white">
       Interview-Prep  <span className=" text-sm font-thin border-2 p-1 rounded-2xl border-slate-800"> beta v1</span>
     </Link>
-    <div className="flex md:gap-10 gap-2 text-sm font-normal ">
+    <div className="md:gap-10 gap-2 text-sm font-normal hidden md:flex">
       <Link href="#how-it-works" className="">
         <h1 className="text-white">
         How it works
