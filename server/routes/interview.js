@@ -18,7 +18,7 @@ const genAI = new GoogleGenerativeAI(api_key);
 
         const model = genAI.getGenerativeModel({ model: "gemini-pro" });
         const result = await model.generateContent([
-            `Assume the role of a job recruiter. I'd like to discuss a job opening with you. Please consider the following job description: ${jobDescription} Based on this job description, I'd like you to prepare 3 questions that a candidate might be asked during an interview. Please format the questions in a consistent style, making sure each question is clear and concise dont use and heading or styling`
+            `Assume the role of a job recruiter. I'd like to discuss a job opening with you. Please consider the following job description: ${jobDescription} Based on this job description, I'd like you to prepare 7 questions that a candidate might be asked during an interview. Please format the questions in a consistent style, making sure each question is clear and concise dont use and heading or styling`
         ]);
 
 
