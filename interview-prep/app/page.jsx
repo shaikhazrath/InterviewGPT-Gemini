@@ -89,7 +89,7 @@ export default function Home() {
     </p>
   </div>
   <div className="md:w-1/2 md:order-1 flex justify-center">
-    <img src="/images/step0.png" alt="Record Audio Responses" className="w-auto h-64 rounded-md"/>
+    <img src="/images/step0.png" alt="Record Audio Responses" className="w-auto h-48 rounded-md"/>
   </div>
 </div>
         <div className="flex flex-col md:flex-row items-center">
@@ -100,7 +100,7 @@ export default function Home() {
             </p>
           </div>
           <div className="md:w-1/2 flex justify-center">
-            <img src="/images/step1.png" alt="Generate Interview Questions" className="w-auto h-64 rounded-md"/>
+            <img src="/images/step1.png" alt="Generate Interview Questions" className="w-auto h-48 rounded-md"/>
           </div>
         </div>
         <div className="flex flex-col md:flex-row items-center">
@@ -111,7 +111,7 @@ export default function Home() {
             </p>
           </div>
           <div className="md:w-1/2 md:order-1 flex justify-center">
-            <img src="/images/step2.jpeg" alt="Record Audio Responses" className="w-auto h-64 rounded-md"/>
+            <img src="/images/step2.jpeg" alt="Record Audio Responses" className="w-auto h-48 rounded-md"/>
           </div>
         </div>
         <div className="flex flex-col md:flex-row items-center">
@@ -122,7 +122,7 @@ export default function Home() {
             </p>
           </div>
           <div className="md:w-1/2 flex justify-center">
-            <img src="/images/step3.jpg" alt="Analyze Responses" className="w-auto h-64 rounded-md"/>
+            <img src="/images/step3.jpg" alt="Analyze Responses" className="w-auto h-48 rounded-md"/>
           </div>
         </div>
       </div>

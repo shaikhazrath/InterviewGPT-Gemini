@@ -58,7 +58,7 @@ const StartInterview = () => {
     <form onSubmit={handleSubmit} className="flex flex-col items-center w-full md:w-3/4 lg:w-1/2 mx-auto px-2">
     <textarea
       required
-      placeholder="Enter your job description"
+      placeholder="Paste your job description"
       className="w-full h-28 my-2 p-2 rounded-md border-2 bg-gray-950 shadow-sm shadow-purple-900 focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none text-white border-purple-900"
       value={jobDescription}
       onChange={e => setJobDescription(e.target.value)}

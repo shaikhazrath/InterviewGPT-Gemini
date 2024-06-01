@@ -19,7 +19,9 @@ const AudioInputComponent = ({ submitAnswer,processing }) => {
     };
 
     recognitionInstance.onend = function () {
-      setIsRecording(false);
+      if(isRecording){
+        recognitionInstance.start()
+      }
     };
 
     setRecognition(recognitionInstance);
@@ -29,7 +31,6 @@ const AudioInputComponent = ({ submitAnswer,processing }) => {
     if (recognition) {
       setText([]);
       setIsRecording(true);
-
       recognition.start();
     }
   };
