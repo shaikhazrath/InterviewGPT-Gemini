@@ -54,7 +54,7 @@ const Page = () => {
   return (
     <div className='bg-black text-white min-h-screen q'>
       {data && data.map((item, index) => (
-        <div key={index} className='flex justify-start items-center'>
+        <div key={index} className='flex justify-start items-center md:flex-row flex-col w-screen p-2'>
           <div className=' '>
             <svg className=' -rotate-90'>
               <circle className='text-slate-400' stroke='currentColor' strokeWidth='4' cx='50%' cy='50%' r='48' fill='transparent' />

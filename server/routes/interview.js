@@ -109,7 +109,7 @@ const genAI = new GoogleGenerativeAI(api_key);
                 `this is the question ${interview.answersWithQuestions[i].question} and this is the answer for it ${interview.answersWithQuestions[i].answer} give rating of out of 10 for the answer to the question just give number dont give any thing other then number for example 1 , 2,3,4,5,6,7,8,9 if answer is no related give 0 `
             ]);
             const feedback = await model.generateContent([
-                `this is the question ${interview.answersWithQuestions[i].question} and this is the answer for it ${interview.answersWithQuestions[i].answer} analyse the answer to question and give short feedback about how to improve it in 3 points dont give any decorations give in string format`
+                `this is the question ${interview.answersWithQuestions[i].question} and this is the answer for it ${interview.answersWithQuestions[i].answer} if the answer is no answer just give no answer probvided analyse the answer to question and give short feedback about how to improve it in 3 points dont give any decorations give in string format`
             ]);
             interview.answersWithQuestions[i].rating = parseInt(rating.response.text());
             interview.answersWithQuestions[i].feedback = feedback.response.text();
