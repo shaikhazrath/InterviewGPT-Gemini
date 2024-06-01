@@ -41,7 +41,7 @@ export default function Home() {
     <Link href="/" className="text-xl font-bold text-white">
       Interview-Prep  <span className=" text-sm font-thin border-2 p-1 rounded-2xl border-slate-800"> beta v1</span>
     </Link>
-    <div className="flex md:gap-10 gap-2 text-sm font-normal ">
+    <div className="md:gap-10 gap-2 text-sm font-normal hidden md:flex">
       <Link href="#how-it-works" className="">
         <h1 className="text-white">
         How it works
@@ -63,7 +63,7 @@ export default function Home() {
       AI Assistance
       </span> 
     </h1>
-    <p className="md:text-xl text-lg mt-4 max-w-2xl">
+    <p className="md:text-xl text-base mt-4 max-w-2xl">
       Get personalized interview questions and detailed feedback to boost your confidence and performance.
     </p> 
     <p className="w-max py-1 text-center border-b-4 rounded- border-purple-500 ">Made with Gemini Ai</p>
