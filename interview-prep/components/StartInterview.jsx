@@ -2,6 +2,7 @@
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import React, { useState, useEffect } from 'react'
+import { BsStars } from "react-icons/bs";
 
 const StartInterview = () => {
   const router = useRouter();
@@ -58,7 +59,7 @@ const StartInterview = () => {
     <textarea
       required
       placeholder="Enter your job description"
-      className="w-full h-28 my-2 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none text-black"
+      className="w-full h-28 my-2 p-2 rounded-md border-2 bg-gray-950 shadow-sm shadow-purple-900 focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none text-white border-purple-900"
       value={jobDescription}
       onChange={e => setJobDescription(e.target.value)}
     />
@@ -67,12 +68,26 @@ const StartInterview = () => {
   type="submit" 
   className={`py-3 rounded-3xl m-2 p-5 font-semibold text-white w-full md:w-1/4
               ${status ? 'bg-gray-400 hover:bg-gray-500 ' : ' border-purple-900 border-2 bg-gradient-to-r from-purple-400 to-purple-600 hover:bg-gradient-to-r hover:from-purple-500 hover:to-purple-400'}
-              shadow-md transition duration-300 
+              shadow-md transition duration-300 flex gap-1 justify-center items-center
              
              `}
   disabled={status}
 >
-  {status ? 'Please wait ...' : 'Start Interview'}
+  {status ? 
+  <h1>
+  Please wait ...
+
+  </h1>
+  
+  
+  : 
+  <div className=' flex justify-between gap-2 items-center'>
+    <h1>Start Interview</h1>
+  <BsStars className=' bg-transparent' />
+
+  </div>
+  }
+
 </button>
   </form>
   

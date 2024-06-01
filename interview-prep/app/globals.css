@@ -40,4 +40,10 @@
   .blink-border {
     animation: blink 1s infinite;
   }
+
+  .text-gradient {
+    background: linear-gradient(to right, #9125fd, #b872fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
   

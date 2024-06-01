@@ -25,8 +25,12 @@ const interviewSchema = new mongoose.Schema({
         feedback:{
             type:String,
             default:null
-        }
+        },
     }],
+    totalScore:{
+        type:Number,
+        default:0
+    },
     counter:{
         type:Number,
         default:0

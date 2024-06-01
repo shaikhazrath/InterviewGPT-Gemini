@@ -45,7 +45,7 @@ const GoogleAuthComponent = () => {
             shape="square"
             type="standard"
             logo_alignment="left"
-            theme="filled_black"
+            theme="outline"
             render={(props) => (
               <button
                 onClick={props.onClick}

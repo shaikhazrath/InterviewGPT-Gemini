@@ -39,7 +39,7 @@ export default function Home() {
 <div className="min-h-screen bg-black">
   <nav className="flex justify-between items-center bg-black p-5 shadow-md">
     <Link href="/" className="text-xl font-bold text-white">
-      Interview-Prep  <span className=" text-sm font-thin border-2 p-1 rounded-2xl border-slate-800"> beta v1</span>
+      Interview-Prep  <span className=" text-sm font-thin border-2 p-1 rounded-2xl border-purple-400"> beta v1</span>
     </Link>
     <div className="md:gap-10 gap-2 text-sm font-normal hidden md:flex">
       <Link href="#how-it-works" className="">
@@ -59,14 +59,14 @@ export default function Home() {
     <h1 className="md:text-5xl text-3xl font-extrabold leading-tight">
       Ace Your Job Interview with 
       <br />
-     <span className=" text-purple-500">
+     <span className="text-gradient">
       AI Assistance
       </span> 
     </h1>
-    <p className="md:text-xl text-base mt-4 max-w-2xl">
+    <p className="md:text-xl text-base mt-4 max-w-2xl text-slate-300">
       Get personalized interview questions and detailed feedback to boost your confidence and performance.
     </p> 
-    <p className="w-max py-1 text-center border-b-4 rounded- border-purple-500 ">Made with Gemini Ai</p>
+    <p className="w-max py-1 text-center border-b-4 rounded- border-purple-500 text-slate-300">Made with Gemini Ai</p>
     <div className="mt-8 w-full flex justify-center">
       {authenticated ? (
         <div className="w-full md:w-screen">
@@ -128,16 +128,16 @@ export default function Home() {
       </div>
     </div>
   </section>
-  <section id="contact" className="bg-black" >
+  <section id="contact" className="bg-black pb-5" >
     <div className="flex justify-center items-center h-full gap-3">
       <h1 className=" text-white ">@shaikhazrathali</h1>
-      <Link href='/'>
+      <Link href='https://www.linkedin.com/in/shaik-hazrathali-856349253/'  target="_blank">
     <FaLinkedin size={30} color="white" />
       </Link>
-      <Link href='/'>
+      <Link href='https://x.com/shaikhazrathali' target="_blank">
       <FaSquareXTwitter size={30} color="white"/>
       </Link>
-      <Link href='/'>
+      <Link href='https://www.instagram.com/hazrathhehe'  target="_blank">
       <AiFillInstagram size={33} color="white" />
       </Link>
     </div>
